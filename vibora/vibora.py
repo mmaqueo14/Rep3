@@ -11,6 +11,8 @@ color_food = random.choice(colors)
 while color_food == color_snake:
     color_food = random.choice(colors)
 
+state = {'vel': 100}
+
 def change(x, y):
     "Change snake direction."
     aim.x = x
@@ -46,7 +48,18 @@ def move():
 
     square(food.x, food.y, 9, color_food)
     update()
+    
+    # Change speed
+    speed(state)
+
+def speed(s):
     ontimer(move, 100)
+    if s == 1:
+        ontimer(move, 0.5)
+    elif s == 2:
+        ontimer(move, 2)
+    elif s == 3:
+        ontimer(move, 4)
 
 setup(420, 420, 370, 0)
 hideturtle()
@@ -56,5 +69,8 @@ onkey(lambda: change(10, 0), 'Right')
 onkey(lambda: change(-10, 0), 'Left')
 onkey(lambda: change(0, 10), 'Up')
 onkey(lambda: change(0, -10), 'Down')
+onkey(lambda: speed(1), '1')
+onkey(lambda: speed(2), '2')
+onkey(lambda: speed(3), '3')
 move()
 done()
