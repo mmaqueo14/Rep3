@@ -13,6 +13,7 @@ Exercises
 
 from turtle import *
 from freegames import vector
+import math
 
 def line(start, end):
     "Draw line from start to end."
@@ -36,17 +37,40 @@ def square(start, end):
 
 def circle(start, end):
     "Draw circle from start to end."
-    pass  # TODO
-
+    pass
+    
 def rectangle(start, end):
     "Draw rectangle from start to end."
-    pass  # TODO
+    up()
+    goto(start.x, start.y)
+    down()
+    begin_fill()
+
+    for count in range(2):
+        forward(end.x - start.x)
+        left(90)
+        forward(end.y - start.y)
+        left(90)
+
+    end_fill()
 
 def triangle(start, end):
     "Draw triangle from start to end."
-    pass  # TODO
+    up()
+    goto(start.x,start.y)
+    down()
+    begin_fill()
+    
+    forward(end.x - start.x)
+    left(120)
+    forward(end.x - start.x)
+    left(120)
+    forward(end.x - start.x)
+    
+    end_fill()
 
 def tap(x, y):
+
     "Store starting point or draw shape."
     start = state['start']
 
@@ -67,11 +91,18 @@ setup(420, 420, 370, 0)
 onscreenclick(tap)
 listen()
 onkey(undo, 'u')
+onkey(clear, 'e')
 onkey(lambda: color('black'), 'K')
 onkey(lambda: color('white'), 'W')
 onkey(lambda: color('green'), 'G')
 onkey(lambda: color('blue'), 'B')
 onkey(lambda: color('red'), 'R')
+onkey(lambda: color('turquoise'), 'T')
+onkey(lambda: width(10), 'W')
+onkey(lambda: width(1), 'w')
+onkey(lambda: shape('classic'), 'C')
+onkey(lambda: shape('turtle'), 'T')
+onkey(lambda: color('hotpink'), 'P')
 onkey(lambda: store('shape', line), 'l')
 onkey(lambda: store('shape', square), 's')
 onkey(lambda: store('shape', circle), 'c')
