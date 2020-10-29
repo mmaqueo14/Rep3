@@ -1,5 +1,5 @@
 """Paint, for drawing shapes.
-Maria
+Maria, Jesús, Karin
 
 Exercises
 
@@ -35,9 +35,16 @@ def square(start, end):
 
     end_fill()
 
-def circle(start, end):
+def circle_(start, end):
     "Draw circle from start to end."
-    pass
+    up()
+    goto(start.x, start.y)
+    down()
+    begin_fill()
+
+    circle(end.x - start.x)
+
+    end_fill()
     
 def rectangle(start, end):
     "Draw rectangle from start to end."
@@ -101,11 +108,11 @@ onkey(lambda: color('turquoise'), 'T')
 onkey(lambda: width(10), 'W')
 onkey(lambda: width(1), 'w')
 onkey(lambda: shape('classic'), 'C')
-onkey(lambda: shape('turtle'), 'T')
+onkey(lambda: shape('turtle'), 'O')
 onkey(lambda: color('hotpink'), 'P')
 onkey(lambda: store('shape', line), 'l')
 onkey(lambda: store('shape', square), 's')
-onkey(lambda: store('shape', circle), 'c')
+onkey(lambda: store('shape', circle_), 'c')
 onkey(lambda: store('shape', rectangle), 'r')
 onkey(lambda: store('shape', triangle), 't')
 done()
