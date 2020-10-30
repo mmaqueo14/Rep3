@@ -1,15 +1,39 @@
 from turtle import *
-from random import randrange
+from random import randrange, randint
 from freegames import square, vector
 
 food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
+aim2 = vector(0,10)
 
 def change(x, y):
     "Change snake direction."
     aim.x = x
     aim.y = y
+
+def change2():
+    ss=randint(1,4)
+
+    if ss==1:
+        aim2.x=0
+        aim2.y=10
+        return aim2
+
+    elif ss==2:
+        aim2.x=-10
+        aim2.y=0
+        return aim2
+
+    elif ss==3:
+        aim2.x=0
+        aim2.y=-10
+        return aim2
+
+    elif ss==4:
+        aim2.x=10
+        aim2.y=0
+        return aim2
 
 def inside(head):
     "Return True if head inside boundaries."
@@ -40,6 +64,7 @@ def move():
         square(body.x, body.y, 9, 'black')
 
     square(food.x, food.y, 9, 'green')
+    food.move(change2())
     update()
     ontimer(move, 100)
 
