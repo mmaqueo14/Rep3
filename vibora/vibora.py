@@ -5,6 +5,8 @@ from freegames import square, vector
 food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
+
+# Added five new colors. Snake and food changes every round.
 colors = ['lightcoral', 'lightsalmon', 'crimson', 'lightseagreen', 'darkslategrey']
 color_snake = random.choice(colors)
 color_food = random.choice(colors)
