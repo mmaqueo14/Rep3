@@ -17,6 +17,7 @@ import math
 
 def line(start, end):
     "Draw line from start to end."
+    # Lifts pencil, goes to point and then place pencil down to go to next point
     up()
     goto(start.x, start.y)
     down()
@@ -29,6 +30,7 @@ def square(start, end):
     down()
     begin_fill()
 
+    # Creates equal sides of square
     for count in range(4):
         forward(end.x - start.x)
         left(90)
@@ -42,6 +44,7 @@ def circle_(start, end):
     down()
     begin_fill()
 
+    # Creates and fills circle with a radius of the difference of x
     circle(end.x - start.x)
 
     end_fill()
@@ -53,6 +56,7 @@ def rectangle(start, end):
     down()
     begin_fill()
 
+    # Creates sides of rectangle
     for count in range(2):
         forward(end.x - start.x)
         left(90)
@@ -68,6 +72,7 @@ def triangle(start, end):
     down()
     begin_fill()
     
+    # Creates an equilateral triangle
     forward(end.x - start.x)
     left(120)
     forward(end.x - start.x)
@@ -93,10 +98,16 @@ def store(key, value):
     "Store value in state at key."
     state[key] = value
 
+# Dictionary to indicate state
 state = {'start': None, 'shape': line}
-setup(420, 420, 370, 0)
+
+# CAnvas where drawing takes place
+setup(600, 600, 500, 0)
+
 onscreenclick(tap)
 listen()
+
+# Keys where colors and types of shape will be specified
 onkey(undo, 'u')
 onkey(clear, 'e')
 onkey(lambda: color('black'), 'K')
