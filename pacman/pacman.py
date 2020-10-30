@@ -2,6 +2,7 @@ from random import choice
 from turtle import *
 from freegames import floor, vector
 
+#Assigning starting locations to pacman and the ghosts.
 state = {'score': 0}
 path = Turtle(visible=False)
 writer = Turtle(visible=False)
@@ -13,6 +14,8 @@ ghosts = [
     [vector(100, 160), vector(0, -5)],
     [vector(100, -160), vector(-5, 0)],
 ]
+
+#Constructing the layout of the playing board. 1 is the playing space and 0 the walls.
 tiles = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0,
@@ -33,9 +36,10 @@ tiles = [
     0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0,
     0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0,
     0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0,
-    0, 0
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 ]
 
+#filling in the gameboard background.
 def square(x, y):
     "Draw square using path at (x, y)."
     path.up()
@@ -49,6 +53,7 @@ def square(x, y):
 
     path.end_fill()
 
+
 def offset(point):
     "Return offset of point in tiles."
     x = (floor(point.x, 20) + 200) / 20
@@ -56,6 +61,7 @@ def offset(point):
     index = int(x + y * 20)
     return index
 
+#Assigning the spaces in which pacman and the ghosts can pass.
 def valid(point):
     "Return True if point is valid in tiles."
     index = offset(point)
@@ -70,6 +76,7 @@ def valid(point):
 
     return point.x % 20 == 0 or point.y % 20 == 0
 
+#Adding color to the background to differentiate walls with paths.
 def world():
     "Draw world using path."
     bgcolor('black')
@@ -88,6 +95,8 @@ def world():
                 path.goto(x + 10, y + 10)
                 path.dot(2, 'white')
 
+
+#Pacman moves where it is aimed. Ghosts move through paths randomly.
 def move():
     "Move pacman and all ghosts."
     writer.undo()
@@ -110,6 +119,7 @@ def move():
     up()
     goto(pacman.x + 10, pacman.y + 10)
     dot(20, 'yellow')
+# Assigning a shape and color to pacman.
 
     for point, course in ghosts:
         if valid(point + course):
@@ -128,6 +138,7 @@ def move():
         up()
         goto(point.x + 10, point.y + 10)
         dot(20, 'red')
+#Assigning a shape and color to the ghosts.
 
     update()
 
@@ -135,8 +146,10 @@ def move():
         if abs(pacman - point) < 20:
             return
 
+#The ontimer controls the speed of both pacman and the ghosts
     ontimer(move, 20)
 
+#Making pacman change direction if the aim changes. This happens when the arrows are clicked.
 def change(x, y):
     "Change pacman aim if valid."
     if valid(pacman + vector(x, y)):
@@ -149,8 +162,8 @@ tracer(False)
 writer.goto(160, 160)
 writer.color('white')
 writer.write(state['score'])
-listen()
-onkey(lambda: change(5, 0), 'Right')
+	listen()
+	onkey(lambda: change(5, 0), 'Right')
 onkey(lambda: change(-5, 0), 'Left')
 onkey(lambda: change(0, 5), 'Up')
 onkey(lambda: change(0, -5), 'Down')
