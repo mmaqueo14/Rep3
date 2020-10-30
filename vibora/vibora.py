@@ -3,7 +3,7 @@ Maria, Karin, Jesus
 30 oct. 2020"""
 
 from turtle import *
-from random import randrange, randint
+from random import randrange, randint, choice
 from freegames import square, vector
 
 # Vectors for the food and the snake
@@ -14,10 +14,10 @@ aim2 = vector(0,10)
 
 # Added five new colors. Snake and food changes every round.
 colors = ['lightcoral', 'lightsalmon', 'crimson', 'lightseagreen', 'darkslategrey']
-color_snake = random.choice(colors)
-color_food = random.choice(colors)
+color_snake = choice(colors)
+color_food = choice(colors)
 while color_food == color_snake:
-    color_food = random.choice(colors)
+    color_food = choice(colors)
 
 # Creates state for snake to continue moving at all times
 state = {'vel': 100}
