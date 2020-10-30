@@ -3,13 +3,14 @@ Maria, Karin, Jesus
 30 oct. 2020"""
 
 from turtle import *
-from random import randrange
+from random import randrange, randint
 from freegames import square, vector
 
 # Vectors for the food and the snake
 food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
+aim2 = vector(0,10)
 
 # Added five new colors. Snake and food changes every round.
 colors = ['lightcoral', 'lightsalmon', 'crimson', 'lightseagreen', 'darkslategrey']
@@ -25,6 +26,29 @@ def change(x, y):
     "Change snake direction."
     aim.x = x
     aim.y = y
+
+def change2():
+    ss=randint(1,4)
+
+    if ss==1:
+        aim2.x=0
+        aim2.y=10
+        return aim2
+
+    elif ss==2:
+        aim2.x=-10
+        aim2.y=0
+        return aim2
+
+    elif ss==3:
+        aim2.x=0
+        aim2.y=-10
+        return aim2
+
+    elif ss==4:
+        aim2.x=10
+        aim2.y=0
+        return aim2
 
 def inside(head):
     "Return True if head inside boundaries."
@@ -58,6 +82,7 @@ def move():
 
     # Changed color to a variable so it can change between rounds
     square(food.x, food.y, 9, color_food)
+    food.move(change2())
     update()
     
     # Change speed
