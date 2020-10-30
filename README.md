@@ -1,4 +1,4 @@
-# Rep3
+# Paint, Snake & Pacman - Project
 
 **Project Description:**\
 	For the project we chose three of the games proposed: Paint, Snake, and Pacman. For each game we altered some of the features and used GitHub to update and organize our code. We created three branches, in addition to the main branch, where every person in the group made their modifications. This way everyone worked independently and in the end, we would merge all modifications and create our final code. 
