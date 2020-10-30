@@ -1,3 +1,7 @@
+"""Semana Tec
+Maria, Karin, Jesus
+30 oct. 2020"""
+
 from random import choice
 from turtle import *
 from freegames import floor, vector
