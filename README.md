@@ -10,10 +10,10 @@
 	In order to use the games, you must have Python installed and have the module freegames. You can either copy the code into the platform you wish to use or you can use a terminal and clone the repository. To do this you must use the command "git clone" and then copy paste the HTTPS link found in GitHub. Once you complete this step, you will have the ability to enter the repository from your terminal and execute the codes. By writing Python and the name of the code a new window will appear where the code will run. Play the game and have fun!
 
 **Requirements for using software:**\
-	*Having Python installed
-	*Having the module freegames if running from Thonny or other platform (For Windows users)
-	*If Apple user, download brew to install the necessary programs
-	*Having a terminal and knowing how to use it
+	* Having Python installed
+	* Having the module freegames if running from Thonny or other platform (For Windows users)
+	* If Apple user, download brew to install the necessary programs
+	* Having a terminal and knowing how to use it
 
 **Project Participants:**\
 	Maria, Karin and Jesus
